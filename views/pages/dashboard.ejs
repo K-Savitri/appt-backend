@@ -1,0 +1,55 @@
+<!-- 
+
+<div class="top-container">
+    <div class="business-header">
+      <p class="todays-header">XYZ CLINIC</p>
+    </div>
+    <div class="right-box">
+      
+    <div class="book-now-box">
+      <button class="book-now-button">Book Here</button>
+
+
+    </div>
+
+    <div class="profile-box">
+      <p><i class="fa-solid fa-gear settings"></i></p>
+    </div>
+    </div>
+  </div> -->
+
+<div class="content-header">
+  
+
+<p class="todays-header">Today's Appointments - <%= todayDate %> - <%= todayDay %></p>
+
+  </div>
+
+<div class="todays-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Phone</th>
+                <th>Time-Slot</th>
+                <th>Duration</th>
+                <th>No-Show</th>
+                <th>Cancel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% appointments.forEach(appointment => { %>
+                <tr>
+                    <td><%= appointment.customer_name %></td>
+                    <td><%= appointment.phone %></td>
+                    <td><%= appointment.start_time  %> - <%= appointment.end_time %></td>
+                    <td><%= appointment.duration %></td>
+                    <td><input type="checkbox"></td>
+                    <td><button class="cancel-btn">Cancel</button></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+

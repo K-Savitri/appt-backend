@@ -1,0 +1,33 @@
+<div class="content-header">
+    <p class="todays-header">Upcoming Appointments</p>
+</div>
+
+<p class="small-header">View By Picking Date <input type="date"></p>
+<p>Date: <%= selectedDate || "15.3.2025" %></p>
+
+<div class="todays-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Phone</th>
+                <th>Time-Slot</th>
+                <th>Duration</th>
+                <th>No-Show</th>
+                <th>Cancel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% appointments.forEach(appt => { %>
+                <tr>
+                    <td><%= appt.customer_name %></td>
+                    <td><%= appt.phone %></td>
+                    <td><%= appt.start_time %> - <%= appt.end_time %></td>
+                    <td><%= appt.duration %></td>
+                    <td><input type="checkbox"></td>
+                    <td><button class="cancel-btn">Cancel</button></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>

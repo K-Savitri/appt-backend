@@ -1,0 +1,38 @@
+<% 
+  // Initialize isTokenBased based on the business type
+  const isTokenBased = 0; 
+%>
+
+<div class="sidebar">
+    <ul>
+      <li class="<%= activePage === 'dashboard' ? 'active' : '' %>">
+        <a href="<%= isTokenBased ? '/token_dashboard' : '/admin_dashboard' %>"><i class="fa-solid fa-house-circle-check"></i> Dashboard</a>
+      </li>
+      <li class="<%= activePage === 'calendar' ? 'active' : '' %>">
+        <a href="/calendar"><i class="fa-regular fa-calendar"></i> Calendar</a>
+      </li>
+      <li class="<%= activePage === (isTokenBased ? 'token_future' : 'future_appt') ? 'active' : '' %>">
+        <a href="<%= isTokenBased ? '/token_future' : '/future_appt' %>">
+          <i class="fa-solid fa-calendar-check"></i> Future Appointments
+        </a>
+      </li>
+      <li class="<%= activePage === 'create_avail' ? 'active' : '' %>">
+        <a href="/create_avail"><i class="fa-regular fa-clock"></i> Create Availability</a>
+      </li>
+      <li class="<%= activePage === (isTokenBased ? 'token_client_list' : 'client_list') ? 'active' : '' %>">
+        <a href="<%= isTokenBased ? '/token_client_list' : '/client_list' %>">
+          <i class="fa-regular fa-address-book"></i> Client List
+        </a>
+      </li>
+      <li class="<%= activePage === (isTokenBased ? 'token_history' : 'history') ? 'active' : '' %>">
+        <a href="<%= isTokenBased ? '/token_history' : '/history' %>">
+          <i class="fa-solid fa-clock-rotate-left"></i> History
+        </a>
+      </li>
+      <li class="<%= activePage === 'settings' ? 'active' : '' %>">
+        <a href="<%= isTokenBased ? '/token_settings' : '/settings' %>">
+          <i class="fa-solid fa-gear"></i> Settings
+        </a>
+      </li>
+    </ul>
+</div>

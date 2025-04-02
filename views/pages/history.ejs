@@ -1,0 +1,37 @@
+
+
+<div class="content-header">
+    <p class="todays-header">History of Appointments</p>
+</div>
+
+<p class="small-header">View By Picking Date <input type="date"></p>
+<p>Date: <%= selectedDate %></p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover" id="historyTable">
+        <thead class="table-dark">
+            <tr>
+                <th>Customer Name</th>
+                <th>Contact Details</th>
+                <th> Time</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Payment Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% appointments.forEach(appointment => { %>
+                <tr>
+                    <td><%= appointment.customer_name %></td>
+                    <td><%= appointment.phone %></td>
+                    <td><%= appointment.start_time %> - <%= appointment.end_time %></td>
+                    <td><%= appointment.duration %></td>
+                    <td><%= appointment.status %></td>
+                    
+                    <td><b class="<%= appointment.paymentStatus === 'Unpaid' ? 'text-danger' : '' %>">
+                        <%= appointment.paymentStatus %></b></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

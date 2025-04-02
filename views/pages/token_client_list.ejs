@@ -1,0 +1,35 @@
+
+<div class="content">
+    <div class="content-header">
+        <p class="todays-header">Client List</p>
+    </div>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover" id="clientTable">
+        <thead class="table-dark">
+            <tr>
+                <th>Customer Name</th>
+                <th>Phone Number</th>
+                <th>Email ID</th>
+                <th>No. of Visits</th>
+                <th>Last Visited</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (clients.length > 0) { %>
+                <% clients.forEach(client => { %>
+                    <tr>
+                        <td><%= client.name %></td>
+                        <td><%= client.phone %></td>
+                        <td><%= client.email %></td>
+                        <td><%= client.visits %></td>
+                        <td><%= client.last_visited %></td>
+                    </tr>
+                <% }); %>
+            <% } else { %>
+                <tr>
+                    <td colspan="5" class="text-center">No clients found</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>

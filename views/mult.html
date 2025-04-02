@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple File Upload</title>
+</head>
+<body>
+
+    <h2>Upload Multiple Files</h2>
+
+    <input type="file" id="fileInput" multiple>
+    <button onclick="checkFiles()">Check Files</button>
+    
+    <h3>Selected Files:</h3>
+    <ul id="fileList"></ul>
+
+    <script>
+        function checkFiles() {
+            const input = document.getElementById("fileInput");
+            const fileList = document.getElementById("fileList");
+
+            fileList.innerHTML = ""; // Clear previous list
+
+            if (input.files.length === 0) {
+                alert("No files selected.");
+                return;
+            }
+
+            for (const file of input.files) {
+                const li = document.createElement("li");
+                li.textContent = `${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+                fileList.appendChild(li);
+            }
+        }
+    </script>
+
+</body>
+</html>

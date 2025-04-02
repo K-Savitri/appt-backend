@@ -1,0 +1,78 @@
+<p class="todays-header">
+    Today's Appointments - <span class="today-date"><%= todayDate %></span> - <span><%= todayDay %></span>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover" id="historyTable">
+        <thead class="table-dark">
+            <tr>
+                <th>Session Name</th>
+                <th>Time Period</th>
+                <th>Total Tokens</th>
+                <th>Booked Tokens</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% appointments.forEach(appointment => { %>
+                <tr>
+                    <td>
+                        <button class="popup-btn tokens-session-popup" onclick="openPopup('<%= appointment.sessionName %>', '<%= appointment.time %>')">
+                            <%= appointment.sessionName %>
+                        </button>
+                    </td>
+                    <td><%= appointment.time %></td>
+                    <td><%= appointment.totalTokens %></td>
+                    <td><%= appointment.bookedTokens %></td>
+                    <td><button onclick="cancelAppointment('<%= appointment.sessionName %>')">Cancel</button></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <!-- Popup Section -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <button class="close-btn" onclick="closePopup()">X</button>
+        <p class="todays-header">List of Patients</p>
+        <p class="small-header"><span id="popup-date"></span> - <span id="popup-session"></span> - <span id="popup-time"></span></p>
+        <table class="tokens-patients">
+            <thead>
+                <tr>
+                    <th class="tokens-table-heading">Customer Name</th>
+                    <th class="tokens-table-heading">Phone</th>
+                    <th class="tokens-table-heading">Token No</th>
+                    <th class="tokens-table-heading">Visited</th>
+                    <th class="tokens-table-heading">Cancel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% patients.forEach(patient => { %>
+                    <tr>
+                        <td><%= patient.name %></td>
+                        <td><%= patient.phone %></td>
+                        <td><%= patient.tokenNo %></td>
+                        <td><input type="checkbox"></td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Popup Script -->
+<script>
+    function openPopup(sessionName, time) {
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("popup-date").innerText = "<%= todayDate %>";
+        document.getElementById("popup-session").innerText = sessionName;
+        document.getElementById("popup-time").innerText = time;
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>

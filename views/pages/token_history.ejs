@@ -1,0 +1,78 @@
+
+
+<div class="content">
+    <div class="content-header">
+        <p class="todays-header">History of Appointments</p>
+    </div>
+
+    <p class="small-header">View By Picking Date <input type="date"></p>
+    <p>Date : <%= appointmentDate %></p>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover" id="historyTable">
+            <thead class="table-dark">
+                <tr>
+                    <th>Session Name</th>
+                    <th>Time Period</th>
+                    <th>Total Tokens</th>
+                    <th>Booked Tokens</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% sessions.forEach(session => { %>
+                    <tr>
+                        <td>
+                            <button class="popup-btn tokens-session-popup" onclick="openPopup()">
+                                <%= session.name %>
+                            </button>
+                        </td>
+                        <td><%= session.time %></td>
+                        <td><%= session.totalTokens %></td>
+                        <td><%= session.bookedTokens %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="popup" id="popup">
+        <button class="close-btn" onclick="closePopup()">X</button>
+        <p class="todays-header">List of Patients</p>
+        <p class="small-header"><%= appointmentDate %> - Morning Session - 9:00 - 12:00</p>
+        <table class="tokens-patients">
+            <thead>
+                <tr>
+                    <th class="tokens-table-heading">Customer Name</th>
+                    <th class="tokens-table-heading">Phone</th>
+                    <th class="tokens-table-heading">Token No</th>
+                    <th class="tokens-table-heading">Status</th>
+                    <th class="tokens-table-heading">Payment Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% patients.forEach(patient => { %>
+                    <tr>
+                        <td><%= patient.name %></td>
+                        <td><%= patient.phone %></td>
+                        <td><%= patient.tokenNo %></td>
+                        <td><%= patient.status %></td>
+                        <td><%= patient.payment %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<script>function openPopup() {
+    document.getElementById("popup").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+}
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+}</script>
